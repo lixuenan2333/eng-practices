@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>开发者代码审查指南 | eng-practices</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="开发者代码审查指南" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Google’s Engineering Practices documentation" />
+<meta property="og:description" content="Google’s Engineering Practices documentation" />
+<meta property="og:site_name" content="eng-practices" />
+<script type="application/ld+json">
+{"url":"/review/","headline":"开发者代码审查指南","description":"Google’s Engineering Practices documentation","@type":"WebPage","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/assets/css/style.css?v=d8fca40959a2320f71702864e87eeb5400473ebd">
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="/">eng-practices</a></h1>
+      
+
+      <h1 id="开发者代码审查指南">开发者代码审查指南</h1>
+
+<h2 id="intro">简介</h2>
+
+<p>代码审查是除了代码作者之外，其他人检查代码的过程。</p>
+
+<p>Google 通过 Code Review 来维护代码和产品质量。</p>
+
+<p>此文档是 Google Code Review 流程和政策的规范说明。</p>
+
+<p>此页面是我们进行 Code Review 流程的概述。本指南还有另外两套文档：</p>
+
+<ul>
+  <li><strong><a href="reviewer/">如何进行 Code Review</a></strong>：针对代码审查者的详细指南。</li>
+  <li><strong><a href="developer/">代码开发者指南</a></strong>：针对 CL 开发者的的详细指南。</li>
+</ul>
+
+<h2 id="look_for">代码审查者应该关注哪些方面？</h2>
+
+<p>代码审查时应该关注以下方面：</p>
+
+<ul>
+  <li><strong>设计</strong>：代码是否经过精心设计并适合您的系统？</li>
+  <li><strong>功能</strong>：代码的行为是否与作者的意图相同？代码是否可以正常响应用户的行为？</li>
+  <li><strong>复杂度</strong>：代码能更简单吗？将来其他开发人员能轻松理解并使用此代码吗？</li>
+  <li><strong>测试</strong>：代码是否具有正确且设计良好的自动化测试？</li>
+  <li><strong>命名</strong>：开发人员是否为变量、类、方法等选择了明确的名称？</li>
+  <li><strong>注释</strong>：评论是否清晰有用？</li>
+  <li><strong>风格</strong>：代码是否遵守了<a href="http://google.github.io/styleguide/">风格指南</a>？</li>
+  <li><strong>文档</strong>：开发人员是否同时更新了相关文档？</li>
+</ul>
+
+<p>参阅<strong><a href="reviewer/">如何进行 Code Review</a></strong> 获取更多资料。</p>
+
+<h3 id="best_reviewers">选择最合适审查者</h3>
+
+<p>一般而言，您希望找到能在合理的时间内回复您的评论的最合适的审查者。</p>
+
+<p>最合适的审查者应该是能彻底了解和审查您代码的人。他们通常是代码的所有者，可能是  OWNERS 文件中的人，也可能不是。有时 CL 的不同部分可能需要不同的人审查。</p>
+
+<p>如果您找到了理想的审查者但他们又没空，那您也至少要抄送他们。</p>
+
+<h3 id="in_person">面对面审查</h3>
+
+<p>如果您与有资格做代码审查的人一起结对编程了一段代码，那么该代码将被视为已审查。</p>
+
+<p>您还可以进行面对面的代码审查，审查者提问，CL 的开发人员作答。</p>
+
+<h2 id="seealso">参考</h2>
+
+<ul>
+  <li><a href="reviewer/">如何进行 Code Review</a>：针对代码审查者的详细指南。</li>
+  <li><a href="developer/">代码开发者指南</a>：针对 CL 开发者的的详细指南。</li>
+</ul>
+
+
+      
+      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+        This site is open source. <a href="https://github.com/rootsongjc/eng-practices/edit/gh-pages/review/index.md">Improve this page</a>.
+      </div>
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+    
+  </body>
+</html>

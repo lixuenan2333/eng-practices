@@ -1,6 +1,0 @@
-theme: jekyll-theme-slate
-plugins:
-  - jekyll-analytics
-jekyll_analytics:
-    GoogleAnalytics:
-    id: UA-93485976-1

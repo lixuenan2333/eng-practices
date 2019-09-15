@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Code Review 速度 | eng-practices</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="Code Review 速度" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Google’s Engineering Practices documentation" />
+<meta property="og:description" content="Google’s Engineering Practices documentation" />
+<meta property="og:site_name" content="eng-practices" />
+<script type="application/ld+json">
+{"url":"/review/reviewer/speed.html","headline":"Code Review 速度","description":"Google’s Engineering Practices documentation","@type":"WebPage","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/assets/css/style.css?v=d8fca40959a2320f71702864e87eeb5400473ebd">
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="/">eng-practices</a></h1>
+      
+
+      <h1 id="code-review-速度">Code Review 速度</h1>
+
+<h2 id="why">为什么尽快进行 Code Review？</h2>
+
+<p><strong>在Google，我们优化了开发团队共同开发产品的速度</strong>，而不是优化单个开发者编写代码的速度。个人开发的速度很重要，它并不如整个团队的速度那么重要。</p>
+
+<p>当代码审查很慢时，会发生以下几件事：</p>
+
+<ul>
+  <li><strong>整个团队的速度降低了。</strong>是的，对审查没有快速响应的个人完成了其他工作。但是，每个 CL 等待审查和重新审查时，团队其他成员的新功能和错误修复会延迟数天，数周或数月。</li>
+  <li><strong>开发者开始抗议代码审查流程。</strong>如果审查者每隔几天只响应一次，但每次都要求对 CL 进行重大更改，那么开发者可能会变得沮丧。通常，开发者将表达对审查者过于“严格”的抱怨。如果审查者请求相同实质性更改（确实可以改善代码运行状况的更改），但每次开发者进行更新时都会快速响应，则抱怨会逐渐消失。<strong>大多数关于代码审查流程的投诉实际上是通过加快流程来解决的。</strong></li>
+  <li><strong>代码运行状况可能会受到影响。</strong>如果审查速度很慢，则放任开发者提交效果不尽如人意的 CL 的压力会增大。审查太慢还会阻止代码清理、重构以及对现有 CL 的进一步改进。</li>
+</ul>
+
+<h2 id="fast">Code Review 应该有多快？</h2>
+
+<p>如果您没有处于重点任务的中，那么您应该在<strong>收到代码审查后尽快开始</strong>。</p>
+
+<p><strong>一个工作日</strong>是响应代码所需的最长时间审查请求（即第二天早上的第一件事）。</p>
+
+<p>遵循这些指导意味着典型的 CL 应该在一天内进行多轮审查（如果需要）。</p>
+
+<h2 id="interruption">速度 vs. 中断</h2>
+
+<p>有一种情况下个人速度胜过团队速度。<strong>如果您正处于重点任务中，例如编写代码，请不要打断自己进行代码审查。</strong>研究表明，开发人员在被打断后需要很长时间才能恢复到顺畅的开发流程中。因此，编写代码时打断自己实际上比让另一位开发人员等待代码审查的代价更加昂贵。</p>
+
+<p>相反，在回复审查请求之前，请等待工作中断点。可能是当你的当前编码任务完成，午餐后，从会议返回，从厨房回来等等。</p>
+
+<h2 id="responses">快速响应</h2>
+
+<p>当我们谈论代码审查的速度时，我们关注的是响应时间，而不是 CL 需要多长时间才能完成整个审查并提交。理想情况下，整个过程也应该是快速的，<strong>快速的个人响应比整个过程快速发生更为重要</strong>。</p>
+
+<p>即使有时需要很久才能完成整个审查流程，但在整个过程中获得审查者的快速响应可以显着减轻开发人员对“慢速”代码审查感到的挫败感。</p>
+
+<p>如果您太忙而无法对 CL 进行全面审查，您仍然可以发送快速回复，让开发人员知道您什么时候可以开始，或推荐其他能够更快回复的审查人员，或者<a href="/review/reviewer/navigate.html">提供一些大体的初步评论</a>。 （注意：这并不意味着您应该中断编码，即使发送这样的响应，也要在工作中的合理断点处发出响应。）</p>
+
+<p>重要的是，审查人员要花足够的时间进行审查，确信他们的“LGTM”意味着“此代码符合我们的<a href="/review/reviewer/standard.html">标准</a>。”但是，理想情况下，个人反应仍然应该很<a href="#fast">快</a>。</p>
+
+<h2 id="tz">跨时区审查</h2>
+
+<p>在处理时区差异时，尝试在他们还在办公室时回复作者。 如果他们已经下班回家了，那么请确保在第二天回到办公室之前完成审查。</p>
+
+<h2 id="lgtm-with-comments">带评论的 LGTM</h2>
+
+<p>为了加快代码审查，在某些情况下，即使他们也在 CL 上留下未解决的评论，审查者也应该给予 LGTM/Approval，这可以是以下任何一种情况：</p>
+
+<ul>
+  <li>审查者确信开发人员将适当地处理所有审查者的剩余评论。</li>
+  <li>其余的更改很小，不必由开发者完成。</li>
+</ul>
+
+<p>如果不清楚的话，审查者应该指定他们想要哪些选项。</p>
+
+<p>当开发者和审查者处于不同的时区时，带评论的 LGTM 尤其值得考虑，否则开发者将等待一整天才能获得 “LGTM，Approval”。</p>
+
+<h2 id="large">大型 CL</h2>
+
+<p>如果有人向您发送了代码审查太大，您不确定何时有时间查看，那么您应该要求开发者<a href="/review/developer/small-cls.html">将 CL 拆分为几个较小的 CL</a>  而不是一次审查的一个巨大的 CL。这通常可行，对审查者非常有帮助，即使需要开发人员的额外工作。</p>
+
+<p>如果 CL 无法分解为较小的 CL，并且您没有时间快速查看整个内容，那么至少要对 CL 的整体设计写一些评论并将其发送回开发人员以进行改进。作为审查者，您的目标之一应该在不牺牲代码健康状况的前提下，始终减少开发者能够快速采取某种进一步的操作的阻力。</p>
+
+<h2 id="time">代码审查随时间推移而改进</h2>
+
+<p>如果您遵循这些准则，并且您对代码审查非常严格，那么您应该会发现整个代码审核流程会随着时间的推移而变得越来越快。开发者可以了解健康代码所需的内容，并向您发送从一开始就很棒的 CL，审查时间会越来越短。审查者学会快速响应，而不是在审查过程中添加不必要的延迟。但是，从长远来看，<strong>不要妄想在<a href="/review/reviewer/standard.html">代码审查标准</a>或质量方面妥协而使代码审查速度飞跃，这样做实际上不会有任何帮助</strong>。</p>
+
+<h2 id="紧急情况">紧急情况</h2>
+
+<p>还有一些<a href="/review/emergencies.html">紧急情况</a>，CL 必须非常快速地通过整个审查流程，并且质量准则将放宽。请查看<a href="(../emergencies.md#what)">什么是紧急情况？</a> 中描述的哪些情况属于紧急情况，哪些情况不属于紧急情况。</p>
+
+<p>下一篇：<a href="/review/reviewer/comments.html">如何撰写 Code Review 评论</a></p>
+
+
+      
+      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+        This site is open source. <a href="https://github.com/rootsongjc/eng-practices/edit/gh-pages/review/reviewer/speed.md">Improve this page</a>.
+      </div>
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+    
+  </body>
+</html>

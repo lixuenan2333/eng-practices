@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Code Review 要点 | eng-practices</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="Code Review 要点" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Google’s Engineering Practices documentation" />
+<meta property="og:description" content="Google’s Engineering Practices documentation" />
+<meta property="og:site_name" content="eng-practices" />
+<script type="application/ld+json">
+{"url":"/review/reviewer/looking-for.html","headline":"Code Review 要点","description":"Google’s Engineering Practices documentation","@type":"WebPage","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/assets/css/style.css?v=d8fca40959a2320f71702864e87eeb5400473ebd">
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="/">eng-practices</a></h1>
+      
+
+      <h1 id="code-review-要点">Code Review 要点</h1>
+
+<p>注意：在考虑这些要点时，请谨记 “<a href="/review/reviewer/standard.html">Code Review 标准</a>”。</p>
+
+<h2 id="设计">设计</h2>
+
+<p>审查中最重要的是 CL 的整体设计。CL 中各种代码的交互是否有意义？此变更是属于您的代码库（codebase）还是属于库（library）？它是否与您系统的其他部分很好地集成？现在是添加此功能的好时机吗？</p>
+
+<h2 id="功能">功能</h2>
+
+<p>这个 CL 是否符合开发者的意图？ 此代码的用户有什么好处？ “用户”通常都是最终用户（当他们受到变更影响时）和开发者（将来必须“使用”此代码）。</p>
+
+<p>大多数情况下，我们希望开发者能够很好地测试 CL，以便在审查时代码能够正常工作。但是，作为审查者，仍然应该考虑边缘情况，寻找并发问题，尝试像用户一样思考，并确保您审查的代码中没有 bug。</p>
+
+<p>您可以根据需要验证 CL——当要检查 CL 的行为会对用户有重大影响，例如 <strong>UI 变更</strong>。当您只是阅读代码时，很难理解某些变更会如何影响用户。如果在 CL 中打 patch 或自行尝试这样的变更太不方便，您可以让开发人员为您提供功能演示。</p>
+
+<p>另一个在代码审查期间特别需要考虑功能的时候，就是如果 CL 中存在某种<strong>并行编程</strong>，理论上可能导致死锁或竞争条件。通过运行代码很难检测到这些类型的问题，并且通常需要某人（开发者和审查者）仔细思考它们以确保不会引入问题。 （请注意，这也是不使用竞争条件或死锁的并发模型的一个很好的理由——它可以使代码审查或理解代码变得非常复杂。）</p>
+
+<h2 id="复杂度">复杂度</h2>
+
+<p>CL 应该如此复杂吗？ 在 CL 的每个等级检查这一点是否过于复杂？ 功能太复杂了吗？ 类太复杂了吗？ “太复杂”通常意味着<strong>“代码阅读器无法快速理解</strong>。”也可能意味着<strong>“开发者在尝试调用或修改此代码时可能会引入错误。”</strong></p>
+
+<p>特定类型的复杂性是<strong>过度工程（over-engineering）</strong>，如开发人员使代码更加通用，或者添加系统当前不需要的功能。 审查者应特别警惕过度工程。 鼓励开发人员解决他们现在需要解决的问题，而不是开发人员推测可能需要在未来解决的问题。未来的问题应该在它实际到达后解决。</p>
+
+<h2 id="测试">测试</h2>
+
+<p>要求进行适合变更的单元、集成或端到端测试。通常，除非 CL 处理<a href="/review/emergencies.html">紧急情况</a>，否则应在与生产代码相同的 CL 中添加测试。</p>
+
+<p>确保 CL 中的测试正确，合理且有用。 测试不会自行测试，我们很少为测试编写测试——人类必须确保测试有效。</p>
+
+<p>当代码被破坏时，测试是否真的会失败？ 如果代码在他们下面发生变化，他们会开始产生误报吗？ 每个测试都会做出简单而有用的断言吗？ 不同测试方法的测试是否适当分开？</p>
+
+<p>请记住，测试也是必须维护的代码。不要仅仅因为它们不是主二进制文件的一部分而接受测试中的复杂性。</p>
+
+<h2 id="命名">命名</h2>
+
+<p>开发人员是否为所有内容选择了好名字？ 一个好名字应该足够长，可以完全传达项目的内容或作用，但又不会太长，以至于难以阅读。</p>
+
+<h2 id="注释">注释</h2>
+
+<p>开发者是否用可理解的英语撰写了清晰的注释？所有注释都是必要的吗？通常，当解释为什么存在某些代码时，注释很有用，不应该解释某些代码正在做什么。如果代码不够清楚，无法解释自己，那么代码应该变得更简单。有一些例外（正则表达式和复杂算法通常会从解释他们正在做的事情的注释中获益很多），但大多数注释都是针对代码本身不可能包含的信息，例如决策背后的推理。</p>
+
+<p>查看此 CL 之前的注释也很有帮助。 也许有一个 TODO 现在可以删除，注释建议不要进行这种改变，等等。</p>
+
+<p>请注意，注释与类、模块或函数的文档不同，它们应该代表一段代码的目的，如何使用它，以及使用时的行为方式。</p>
+
+<h2 id="风格">风格</h2>
+
+<p>Google 提供了所有主要语言的<a href="http://google.github.io/styleguide/">风格指南</a>，甚至包括大多数小众语言。确保 CL 遵循适当的风格指南。</p>
+
+<p>如果你想改进风格指南中没有的一些样式点，请在评论前加上“Nit：”，让开发人员知道你认为这会改善代码，但不是强制性的。不要仅根据个人风格偏好阻止提交 CL。</p>
+
+<p>CL 的作者不应包括与其他变更相结合的主要风格变更。它使得很难看到 CL 中的变更，使合并和回滚更复杂，并导致其他问题。例如，如果作者想要重新格式化整个文件，让他们只将重新格式化为一个 CL，然后再发送另一个 CL 及其功能变更。</p>
+
+<h2 id="文档">文档</h2>
+
+<p>如果 CL 变更了用户构建、测试、交互或发布代码的方式，请检查相关文档是否有更新，包括 README、g3doc 页面和任何生成的参考文档。如果 CL 删除或弃用代码，请考虑是否也应删除文档。 如果缺少文档，请询问。</p>
+
+<h2 id="every_line">每一行</h2>
+
+<p>查看分配给您审查的每行代码。如数据文件、生成的代码或大型数据结构，有时您可以扫描，但不扫描人类编写的类、函数或代码块，并假设其中的内容是 OK 的。显然，某些代码需要比其他代码更仔细的审查——这是你必须做出的判断调用——但你至少应该确定你理解所有代码正在做什么。</p>
+
+<p>如果您觉得这些代码太难难阅读了，会减慢您审查的速度，那么您应该让开发人员知道并在他们等您审查完成之前澄清。在 Google，我们聘请了优秀的软件工程师，您就是其中之一。如果您无法理解代码，那么很可能其他开发人员也不会。因此，当您要求开发人员澄清此代码时，您也会帮助未来的开发人员理解这些代码。</p>
+
+<p>如果您了解代码但觉得没有资格做某些部分的审查，请确保 CL 上有一个合格的审查人，特别是对于安全性、并发性、可访问性、国际化等复杂问题。</p>
+
+<h2 id="上下文">上下文</h2>
+
+<p>在广泛的上下文下查看 CL 通常很有帮助。通常，代码审查工具只会显示围绕要变更的部分的几行代码。有时您必须查看整个文件以确保变更确实有意义。例如，您可能只看到添加了四个新行，但是当您查看整个文件时，您会看到这四行是在 50 行的方法里，现在确实需要将它们分解为更小的方法。</p>
+
+<p>在整个系统的上下文中考虑 CL 也很有用。 这个 CL 是否改善了系统的代码健康状况，还是使整个系统更复杂，测试更少等等？<strong>不要接受降低系统代码运行状况的 CL</strong>。大多数系统通过许多小的变化而变得复杂，因此在新变化中防止甚至很小的复杂性也很重要。</p>
+
+<h2 id="good_things">好的事情</h2>
+
+<p>如果你在 CL 中看到一些不错的东西，请告诉开发者，特别是当他们以一种很好的方式解决了你的的一个评论时。代码审查通常只关注错误，但也应该为良好实践提供鼓励。在指导方面，有时更有价值的是告诉开发人员他们做得对，而不是告诉他们他们做错了什么。</p>
+
+<h2 id="总结">总结</h2>
+
+<p>在进行代码审查时，您应该确保：</p>
+
+<ul>
+  <li>代码设计精良。</li>
+  <li>该功能对代码用户有利。</li>
+  <li>任何 UI 变更都是明智的，看起来很好。</li>
+  <li>任何并行编程都是安全的。</li>
+  <li>代码并不比它需要的复杂。</li>
+  <li>开发人员没有实现他们将来可能需要的东西，且不知道他们现在需要。</li>
+  <li>代码有适当的单元测试。</li>
+  <li>测试精心设计。</li>
+  <li>开发人员使用了清晰的名称。</li>
+  <li>评论清晰有用，大多解释为什么而不是什么。</li>
+  <li>代码适当记录（通常在 g3doc 中）。</li>
+  <li>代码符合我们的风格指南。</li>
+</ul>
+
+<p>确保查看您被要求查看的<strong>每一行</strong>代码，查看<strong>上下文</strong>，确保您<strong>提高代码健康状况</strong>，并赞扬开发人员所做的<strong>好事</strong>。</p>
+
+<p>下一篇：<a href="/review/reviewer/navigate.html">查看 CL 的步骤</a></p>
+
+
+      
+      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+        This site is open source. <a href="https://github.com/rootsongjc/eng-practices/edit/gh-pages/review/reviewer/looking-for.md">Improve this page</a>.
+      </div>
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+    
+  </body>
+</html>
