@@ -1,70 +1,37 @@
-# How to write code review comments
+# 如何撰写 Code Review 评论
 
+## 总结
 
+-   善待。
+ - 解释你的推理。
+ - 在给出明确的指示与只指出问题并让开发人员自己决定间做好平衡。
+ -   鼓励开发人员简化代码或添加代码注释，而不仅仅是向你解释复杂性。
 
-## Summary
+## 礼貌
 
--   Be kind.
--   Explain your reasoning.
--   Balance giving explicit directions with just pointing out problems and
-    letting the developer decide.
--   Encourage developers to simplify code or add code comments instead of just
-    explaining the complexity to you.
+一般而言，重要的是要礼貌和尊重，同时对正在审查其代码的开发人员非常清楚和有帮助。 一种方法是确保您始终对代码发表评论，而不是对开发人员发表评论。 你并不总是必须遵循这种做法，但在说出可能令人不安或有争议的事情时你绝对应该使用它。 例如：
 
-## Courtesy
+糟糕：“为什么这里**你**使用了线程，显然并发并没有带来什么好处？”
 
-In general, it is important to be
-courteous and respectful while also being
-very clear and helpful to the developer whose code you are reviewing. One way to
-do this is to be sure that you are always making comments about the *code* and
-never making comments about the *developer*. You don't always have to follow
-this practice, but you should definitely use it when saying something that might
-otherwise be upsetting or contentious. For example:
+好的：“这里的并发模型增加了系统的复杂性，但没有任何实际的性能优势，因为没有性能优势，最好是将这些代码作为单线程处理而不是使用多线程。”
 
-Bad: "Why did **you** use threads here when there's obviously no benefit to be
-gained from concurrency?"
+## 解释为什么{#why}
 
-Good: "The concurrency model here is adding complexity to the system without any
-actual performance benefit that I can see. Because there's no performance
-benefit, it's best for this code to be single-threaded instead of using multiple
-threads."
+关于上面的“好”示例，您会注意到的一件事是，它可以帮助开发人员理解您发表评论的原因。 并不总是需要您在审查评论中包含此信息，但有时为了表明您的意图，追加您在遵循的最佳实践，或为您建议如何提高代码健康状况提供更多解释是恰当的。
 
-## Explain Why {#why}
+## 给予指导 {#guidance}
 
-One thing you'll notice about the "good" example from above is that it helps the
-developer understand *why* you are making your comment. You don't always need to
-include this information in your review comments, but sometimes it's appropriate
-to give a bit more explanation around your intent, the best practice you're
-following, or how your suggestion improves code health.
+**一般来说，修复 CL 是开发人员的责任，而不是审查者。您无需为开发人员详细设计解决方案或编写代码。**
 
-## Giving Guidance {#guidance}
+但这并不意味着审查者应该没有帮助。一般来说，您应该在指出问题和提供直接指导之间取得适当的平衡。指出问题并让开发人员做出决定通常有助于开发人员学习，并使代码审查变得更容易。它还可以产生更好的解决方案，因为开发人员比审查者更接近代码。
 
-**In general it is the developer's responsibility to fix a CL, not the
-reviewer's.** You are not required to do detailed design of a solution or write
-code for the developer.
+但是，有时直接说明，建议甚至代码会更有帮助。代码审查的主要目标是获得最佳 CL。第二个目标是提高开发人员的技能，以便他们随着时间的推移需要的审查越来越少。
 
-This doesn't mean the reviewer should be unhelpful, though. In general you
-should strike an appropriate balance between pointing out problems and providing
-direct guidance. Pointing out problems and letting the developer make a decision
-often helps the developer learn, and makes it easier to do code reviews. It also
-can result in a better solution, because the developer is closer to the code
-than the reviewer is.
+## 接受解释 {#explanations}
 
-However, sometimes direct instructions, suggestions, or even code are more
-helpful. The primary goal of code review is to get the best CL possible. A
-secondary goal is improving the skills of developers so that they require less
-and less review over time.
+如果您要求开发人员解释一段您不理解的代码，那通常会导致他们**更清楚地重写代码**。偶尔，在代码中添加注释也是一种恰当的响应，只要它不仅仅是解释过于复杂的代码。
 
-## Accepting Explanations {#explanations}
+**仅在代码审查工具中编写的解释对未来的代码阅读者没有帮助。**这仅在少数情况下是可接受的，例如当您查看一个您不熟悉的领域时，开发人员会向您解释代码的普通读者已经知道的内容。
 
-If you ask a developer to explain a piece of code that you don't understand,
-that should usually result in them **rewriting the code more clearly**.
-Occasionally, adding a comment in the code is also an appropriate response, as
-long as it's not just explaining overly complex code.
+下一篇：[处理 Code Review 中的抵触](pushback.md)
 
-**Explanations written only in the code review tool are not helpful to future
-code readers.** They are acceptable only in a few circumstances, such as when
-you are reviewing an area you are not very familiar with and the developer
-explains something that normal readers of the code would have already known.
-
-Next: [Handling Pushback in Code Reviews](pushback.md)

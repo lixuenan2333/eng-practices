@@ -1,204 +1,96 @@
-# What to look for in a code review
+# Code Review 要点
 
+注意：在考虑这些要点时，请谨记 “[Code Review 标准](standard.md)”。
 
+## 设计
 
-Note: Always make sure to take into account
-[The Standard of Code Review](standard.md) when considering each of these
-points.
+审查中最重要的是 CL 的整体设计。CL 中各种代码的交互是否有意义？此变更是属于您的代码库（codebase）还是属于库（library）？它是否与您系统的其他部分很好地集成？现在是添加此功能的好时机吗？
 
-## Design
+## 功能
 
-The most important thing to cover in a review is the overall design of the CL.
-Do the interactions of various pieces of code in the CL make sense? Does this
-change belong in your codebase, or in a library? Does it integrate well with the
-rest of your system? Is now a good time to add this functionality?
+这个 CL 是否符合开发者的意图？ 此代码的用户有什么好处？ “用户”通常都是最终用户（当他们受到变更影响时）和开发者（将来必须“使用”此代码）。
 
-## Functionality
+大多数情况下，我们希望开发者能够很好地测试 CL，以便在审查时代码能够正常工作。但是，作为审查者，仍然应该考虑边缘情况，寻找并发问题，尝试像用户一样思考，并确保您审查的代码中没有 bug。
 
-Does this CL do what the developer intended? Is what the developer intended good
-for the users of this code? The "users" are usually both end-users (when they
-are affected by the change) and developers (who will have to "use" this code in
-the future).
+您可以根据需要验证 CL——当要检查 CL 的行为会对用户有重大影响，例如 **UI 变更**。当您只是阅读代码时，很难理解某些变更会如何影响用户。如果在 CL 中打 patch 或自行尝试这样的变更太不方便，您可以让开发人员为您提供功能演示。
 
-Mostly, we expect developers to test CLs well-enough that they work correctly by
-the time they get to code review. However, as the reviewer you should still be
-thinking about edge cases, looking for concurrency problems, trying to think
-like a user, and making sure that there are no bugs that you see just by reading
-the code.
+另一个在代码审查期间特别需要考虑功能的时候，就是如果 CL 中存在某种**并行编程**，理论上可能导致死锁或竞争条件。通过运行代码很难检测到这些类型的问题，并且通常需要某人（开发者和审查者）仔细思考它们以确保不会引入问题。 （请注意，这也是不使用竞争条件或死锁的并发模型的一个很好的理由——它可以使代码审查或理解代码变得非常复杂。）
 
-You *can* validate the CL if you want—the time when it's most important for a
-reviewer to check a CL's behavior is when it has a user-facing impact, such as a
-**UI change**. It's hard to understand how some changes will impact a user when
-you're just reading the code. For changes like that, you can have the developer
-give you a demo of the functionality if it's too inconvenient to patch in the CL
-and try it yourself.
+## 复杂度
 
-Another time when it's particularly important to think about functionality
-during a code review is if there is some sort of **parallel programming** going
-on in the CL that could theoretically cause deadlocks or race conditions. These
-sorts of issues are very hard to detect by just running the code and usually
-need somebody (both the developer and the reviewer) to think through them
-carefully to be sure that problems aren't being introduced. (Note that this is
-also a good reason not to use concurrency models where race conditions or
-deadlocks are possible—it can make it very complex to do code reviews or
-understand the code.)
+CL 应该如此复杂吗？ 在 CL 的每个等级检查这一点是否过于复杂？ 功能太复杂了吗？ 类太复杂了吗？ “太复杂”通常意味着**“代码阅读器无法快速理解**。”也可能意味着**“开发者在尝试调用或修改此代码时可能会引入错误。”**
 
-## Complexity
+特定类型的复杂性是**过度工程（over-engineering）**，如开发人员使代码更加通用，或者添加系统当前不需要的功能。 审查者应特别警惕过度工程。 鼓励开发人员解决他们现在需要解决的问题，而不是开发人员推测可能需要在未来解决的问题。未来的问题应该在它实际到达后解决。
 
-Is the CL more complex than it should be? Check this at every level of the
-CL—are individual lines too complex? Are functions too complex? Are classes too
-complex? "Too complex" usually means **"can't be understood quickly by code
-readers."** It can also mean **"developers are likely to introduce bugs when
-they try to call or modify this code."**
+## 测试
 
-A particular type of complexity is **over-engineering**, where developers have
-made the code more generic than it needs to be, or added functionality that
-isn't presently needed by the system. Reviewers should be especially vigilant
-about over-engineering. Encourage developers to solve the problem they know
-needs to be solved *now*, not the problem that the developer speculates *might*
-need to be solved in the future. The future problem should be solved once it
-arrives and you can see its actual shape and requirements in the physical
-universe.
+要求进行适合变更的单元、集成或端到端测试。通常，除非 CL 处理[紧急情况](../emergencies.md)，否则应在与生产代码相同的 CL 中添加测试。
 
-## Tests
+确保 CL 中的测试正确，合理且有用。 测试不会自行测试，我们很少为测试编写测试——人类必须确保测试有效。
 
-Ask for unit, integration, or end-to-end
-tests as appropriate for the change. In general, tests should be added in the
-same CL as the production code unless the CL is handling an
-[emergency](../emergencies.md).
+当代码被破坏时，测试是否真的会失败？ 如果代码在他们下面发生变化，他们会开始产生误报吗？ 每个测试都会做出简单而有用的断言吗？ 不同测试方法的测试是否适当分开？
 
-Make sure that the tests in the CL are correct, sensible, and useful. Tests do
-not test themselves, and we rarely write tests for our tests—a human must ensure
-that tests are valid.
+请记住，测试也是必须维护的代码。不要仅仅因为它们不是主二进制文件的一部分而接受测试中的复杂性。
 
-Will the tests actually fail when the code is broken? If the code changes
-beneath them, will they start producing false positives? Does each test make
-simple and useful assertions? Are the tests separated appropriately between
-different test methods?
+## 命名
 
-Remember that tests are also code that has to be maintained. Don't accept
-complexity in tests just because they aren't part of the main binary.
+开发人员是否为所有内容选择了好名字？ 一个好名字应该足够长，可以完全传达项目的内容或作用，但又不会太长，以至于难以阅读。
 
-## Naming
+## 注释
 
-Did the developer pick good names for everything? A good name is long enough to
-fully communicate what the item is or does, without being so long that it
-becomes hard to read.
+开发者是否用可理解的英语撰写了清晰的注释？所有注释都是必要的吗？通常，当解释为什么存在某些代码时，注释很有用，不应该解释某些代码正在做什么。如果代码不够清楚，无法解释自己，那么代码应该变得更简单。有一些例外（正则表达式和复杂算法通常会从解释他们正在做的事情的注释中获益很多），但大多数注释都是针对代码本身不可能包含的信息，例如决策背后的推理。
 
-## Comments
+查看此 CL 之前的注释也很有帮助。 也许有一个 TODO 现在可以删除，注释建议不要进行这种改变，等等。
 
-Did the developer write clear comments in understandable English? Are all of the
-comments actually necessary? Usually comments are useful when they **explain
-why** some code exists, and should not be explaining *what* some code is doing.
-If the code isn't clear enough to explain itself, then the code should be made
-simpler. There are some exceptions (regular expressions and complex algorithms
-often benefit greatly from comments that explain what they're doing, for
-example) but mostly comments are for information that the code itself can't
-possibly contain, like the reasoning behind a decision.
+请注意，注释与类、模块或函数的文档不同，它们应该代表一段代码的目的，如何使用它，以及使用时的行为方式。
 
-It can also be helpful to look at comments that were there before this CL. Maybe
-there is a TODO that can be removed now, a comment advising against this change
-being made, etc.
+## 风格
 
-Note that comments are different from *documentation* of classes, modules, or
-functions, which should instead express the purpose of a piece of code, how it
-should be used, and how it behaves when used.
+Google 提供了所有主要语言的[风格指南](http://google.github.io/styleguide/)，甚至包括大多数小众语言。确保 CL 遵循适当的风格指南。
 
-## Style
+如果你想改进风格指南中没有的一些样式点，请在评论前加上“Nit：”，让开发人员知道你认为这会改善代码，但不是强制性的。不要仅根据个人风格偏好阻止提交 CL。
 
-We have [style guides](http://google.github.io/styleguide/) at Google for all
-of our major languages, and even for most of the minor languages. Make sure the
-CL follows the appropriate style guides.
+CL 的作者不应包括与其他变更相结合的主要风格变更。它使得很难看到 CL 中的变更，使合并和回滚更复杂，并导致其他问题。例如，如果作者想要重新格式化整个文件，让他们只将重新格式化为一个 CL，然后再发送另一个 CL 及其功能变更。
 
-If you want to improve some style point that isn't in the style guide, prefix
-your comment with "Nit:" to let the developer know that it's a nitpick that you
-think would improve the code but isn't mandatory. Don't block CLs from being
-submitted based only on personal style preferences.
+## 文档
 
-The author of the CL should not include major style changes combined with other
-changes. It makes it hard to see what is being changed in the CL, makes merges
-and rollbacks more complex, and causes other problems. For example, if the
-author wants to reformat the whole file, have them send you just the
-reformatting as one CL, and then send another CL with their functional changes
-after that.
+如果 CL 变更了用户构建、测试、交互或发布代码的方式，请检查相关文档是否有更新，包括 README、g3doc 页面和任何生成的参考文档。如果 CL 删除或弃用代码，请考虑是否也应删除文档。 如果缺少文档，请询问。
 
-## Documentation
+## 每一行 {#every_line}
 
-If a CL changes how users build, test, interact with, or release code, check to
-see that it also updates associated documentation, including
-READMEs, g3doc pages, and any generated
-reference docs. If the CL deletes or deprecates code, consider whether the
-documentation should also be deleted.
-If documentation is
-missing, ask for it.
+查看分配给您审查的每行代码。如数据文件、生成的代码或大型数据结构，有时您可以扫描，但不扫描人类编写的类、函数或代码块，并假设其中的内容是 OK 的。显然，某些代码需要比其他代码更仔细的审查——这是你必须做出的判断调用——但你至少应该确定你理解所有代码正在做什么。
 
-## Every Line {#every_line}
+如果您觉得这些代码太难难阅读了，会减慢您审查的速度，那么您应该让开发人员知道并在他们等您审查完成之前澄清。在 Google，我们聘请了优秀的软件工程师，您就是其中之一。如果您无法理解代码，那么很可能其他开发人员也不会。因此，当您要求开发人员澄清此代码时，您也会帮助未来的开发人员理解这些代码。
 
-Look at *every* line of code that you have been assigned to review. Some things
-like data files, generated code, or large data structures you can scan over
-sometimes, but don't scan over a human-written class, function, or block of code
-and assume that what's inside of it is okay. Obviously some code deserves more
-careful scrutiny than other code&mdash;that's a judgment call that you have to
-make&mdash;but you should at least be sure that you *understand* what all the
-code is doing.
+如果您了解代码但觉得没有资格做某些部分的审查，请确保 CL 上有一个合格的审查人，特别是对于安全性、并发性、可访问性、国际化等复杂问题。
 
-If it's too hard for you to read the code and this is slowing down the review,
-then you should let the developer know that
-and wait for them to clarify it before you try to review it. At Google, we hire
-great software engineers, and you are one of them. If you can't understand the
-code, it's very likely that other developers won't either. So you're also
-helping future developers understand this code, when you ask the developer to
-clarify it.
+## 上下文
 
-If you understand the code but you don't feel qualified to do some part of the
-review, make sure there is a reviewer on the CL who is qualified, particularly
-for complex issues such as security, concurrency, accessibility,
-internationalization, etc.
+在广泛的上下文下查看 CL 通常很有帮助。通常，代码审查工具只会显示围绕要变更的部分的几行代码。有时您必须查看整个文件以确保变更确实有意义。例如，您可能只看到添加了四个新行，但是当您查看整个文件时，您会看到这四行是在 50 行的方法里，现在确实需要将它们分解为更小的方法。
 
-## Context
+在整个系统的上下文中考虑 CL 也很有用。 这个 CL 是否改善了系统的代码健康状况，还是使整个系统更复杂，测试更少等等？**不要接受降低系统代码运行状况的 CL**。大多数系统通过许多小的变化而变得复杂，因此在新变化中防止甚至很小的复杂性也很重要。
 
-It is often helpful to look at the CL in a broad context. Usually the code
-review tool will only show you a few lines of code around the parts that are
-being changed. Sometimes you have to look at the whole file to be sure that the
-change actually makes sense. For example, you might see only four new lines
-being added, but when you look at the whole file, you see those four lines are
-in a 50-line method that now really needs to be broken up into smaller methods.
+## 好的事情 {#good_things}
 
-It's also useful to think about the CL in the context of the system as a whole.
-Is this CL improving the code health of the system or is it making the whole
-system more complex, less tested, etc.? **Don't accept CLs that degrade the code
-health of the system.** Most systems become complex through many small changes
-that add up, so it's important to prevent even small complexities in new
-changes.
+如果你在 CL 中看到一些不错的东西，请告诉开发者，特别是当他们以一种很好的方式解决了你的的一个评论时。代码审查通常只关注错误，但也应该为良好实践提供鼓励。在指导方面，有时更有价值的是告诉开发人员他们做得对，而不是告诉他们他们做错了什么。
 
-## Good Things {#good_things}
+## 总结
 
-If you see something nice in the CL, tell the developer, especially when they
-addressed one of your comments in a great way. Code reviews often just focus on
-mistakes, but they should offer encouragement and appreciation for good
-practices, as well. It’s sometimes even more valuable, in terms of mentoring, to
-tell a developer what they did right than to tell them what they did wrong.
+在进行代码审查时，您应该确保：
 
-## Summary
+ - 代码设计精良。
+ - 该功能对代码用户有利。
+ - 任何 UI 变更都是明智的，看起来很好。
+ - 任何并行编程都是安全的。
+ - 代码并不比它需要的复杂。
+ - 开发人员没有实现他们将来可能需要的东西，且不知道他们现在需要。
+ - 代码有适当的单元测试。
+ - 测试精心设计。
+ - 开发人员使用了清晰的名称。
+ - 评论清晰有用，大多解释为什么而不是什么。
+ - 代码适当记录（通常在 g3doc 中）。
+ - 代码符合我们的风格指南。
 
-In doing a code review, you should make sure that:
+确保查看您被要求查看的**每一行**代码，查看**上下文**，确保您**提高代码健康状况**，并赞扬开发人员所做的**好事**。
 
--   The code is well-designed.
--   The functionality is good for the users of the code.
--   Any UI changes are sensible and look good.
--   Any parallel programming is done safely.
--   The code isn't more complex than it needs to be.
--   The developer isn't implementing things they *might* need in the future but
-    don't know they need now.
--   Code has appropriate unit tests.
--   Tests are well-designed.
--   The developer used clear names for everything.
--   Comments are clear and useful, and mostly explain *why* instead of *what*.
--   Code is appropriately documented (generally in g3doc).
--   The code conforms to our style guides.
-
-Make sure to review **every line** of code you've been asked to review, look at
-the **context**, make sure you're **improving code health**, and compliment
-developers on **good things** that they do.
-
-Next: [Navigating a CL in Review](navigate.md)
+下一篇：[查看 CL 的步骤](navigate.md)
