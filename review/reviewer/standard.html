@@ -1,31 +1,44 @@
 <!DOCTYPE html>
 <html lang="en-US">
+
   <head>
-    <meta charset="UTF-8">
+    <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="stylesheet" type="text/css" media="screen" href="/eng-practices/assets/css/style.css?v=47799344f85e373a4a74c4219af5070fbc3d5eb1">
 
 <!-- Begin Jekyll SEO tag v2.5.0 -->
-<title>Code Review 标准 | eng-practices</title>
+<title>Code Review 标准 | Google Engineering Practices Documentation</title>
 <meta name="generator" content="Jekyll v3.8.5" />
 <meta property="og:title" content="Code Review 标准" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Google’s Engineering Practices documentation" />
-<meta property="og:description" content="Google’s Engineering Practices documentation" />
-<meta property="og:site_name" content="eng-practices" />
+<meta name="description" content="谷歌工程实践文档 - https://jimmysong.io/eng-practices" />
+<meta property="og:description" content="谷歌工程实践文档 - https://jimmysong.io/eng-practices" />
+<meta property="og:site_name" content="Google Engineering Practices Documentation" />
 <script type="application/ld+json">
-{"url":"/review/reviewer/standard.html","headline":"Code Review 标准","description":"Google’s Engineering Practices documentation","@type":"WebPage","@context":"http://schema.org"}</script>
+{"url":"/eng-practices/review/reviewer/standard.html","headline":"Code Review 标准","description":"谷歌工程实践文档 - https://jimmysong.io/eng-practices","@type":"WebPage","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
-    <link rel="stylesheet" href="/assets/css/style.css?v=d8fca40959a2320f71702864e87eeb5400473ebd">
   </head>
-  <body>
-    <div class="container-lg px-3 my-5 markdown-body">
-      
-      <h1><a href="/">eng-practices</a></h1>
-      
 
-      <h1 id="code-review-标准">Code Review 标准</h1>
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/rootsongjc/eng-practices">View on GitHub</a>
+
+          <h1 id="project_title">Google Engineering Practices Documentation</h1>
+          <h2 id="project_tagline">谷歌工程实践文档 - https://jimmysong.io/eng-practices</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1 id="code-review-标准">Code Review 标准</h1>
 
 <p>代码审查的主要目的是确保逐步改善 Google 代码库的整体健康状况。代码审查的所有工具和流程都是为此而设计的。</p>
 
@@ -35,7 +48,7 @@
 
 <p>另外，审查者有责任确保随着时间的推移，CL 的质量不会使代码库的整体健康状况下降。这可能很棘手，因为通常情况下，代码库健康状况会随着时间的而下降，特别是在对团队有严格的时间要求时，团队往往会采取捷径。</p>
 
-<p>此外，审查者应对正在审核的代码负责并拥有所有权。审查者希望确保代码库保持一致、可维护及 <a href="/review/reviewer/looking-for.html">Code Review 要点</a>中所提及的所有其他内容。</p>
+<p>此外，审查者应对正在审核的代码负责并拥有所有权。审查者希望确保代码库保持一致、可维护及 <a href="/eng-practices/review/reviewer/looking-for.html">Code Review 要点</a>中所提及的所有其他内容。</p>
 
 <p>因此，我们将以下规则作为 Code Review 中期望的标准：</p>
 
@@ -49,7 +62,7 @@
 
 <p>审查者应该随时评论，表达更好的东西，但如果评论不是很重要，请在评论语句前加上“Nit：”之类的内容，让开发者知道这条评论可以忽略。</p>
 
-<p>注意：本文档中没有任何内容证明检查 CL 肯定会使系统的整体代码健康状况恶化。只有在<a href="/review/emergencies.html">紧急情况</a>时你才可以。</p>
+<p>注意：本文档中没有任何内容证明检查 CL 肯定会使系统的整体代码健康状况恶化。只有在<a href="/eng-practices/review/emergencies.html">紧急情况</a>时你才可以。</p>
 
 <h2 id="指导">指导</h2>
 
@@ -66,23 +79,27 @@
 
 <h2 id="conflicts">解决冲突</h2>
 
-<p>如果在代码审查过程中有任何冲突，第一步应该始终是开发人员和审查者根据本文档中的 <a href="../developer/">CL 开发者指南</a>和<a href="/review/reviewer/">审查者指南</a>达成共识。</p>
+<p>如果在代码审查过程中有任何冲突，第一步应该始终是开发人员和审查者根据本文档中的 <a href="../developer/">CL 开发者指南</a>和<a href="/eng-practices/review/reviewer/">审查者指南</a>达成共识。</p>
 
 <p>当达成共识变得特别困难时，审阅者和开发者可以进行面对面的会议，或者有 VC 参与调停，而不仅仅是试着通过代码审查评论来解决冲突。 （但是，如果您这样做了，请确保在 CL 的评论中记录讨论结果，以供将来的读者使用。）</p>
 
 <p>如果这样还不能解决问题，那么解决该问题最常用方法是将问题升级。通常是将问题升级为更广泛的团队讨论，有一个 TL 权衡，要求维护人员对代码作出决定，或要求工程经理的帮助。 <strong>不要因为 CL 的开发者和审查者不能达成一致，就让 CL 在那里卡壳。</strong></p>
 
-<p>下一篇：<a href="/review/reviewer/looking-for.html">Code Review 要点</a></p>
+<p>下一篇：<a href="/eng-practices/review/reviewer/looking-for.html">Code Review 要点</a></p>
 
-
-      
-      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
-        This site is open source. <a href="https://github.com/rootsongjc/eng-practices/edit/gh-pages/review/reviewer/standard.md">Improve this page</a>.
-      </div>
-      
+      </section>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
-    <script>anchors.add();</script>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">Google Engineering Practices Documentation maintained by <a href="https://github.com/rootsongjc">rootsongjc</a></p>
+        
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
     
   </body>
 </html>

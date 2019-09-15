@@ -1,33 +1,46 @@
 <!DOCTYPE html>
 <html lang="en-US">
+
   <head>
-    <meta charset="UTF-8">
+    <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="stylesheet" type="text/css" media="screen" href="/eng-practices/assets/css/style.css?v=47799344f85e373a4a74c4219af5070fbc3d5eb1">
 
 <!-- Begin Jekyll SEO tag v2.5.0 -->
-<title>Code Review 要点 | eng-practices</title>
+<title>Code Review 要点 | Google Engineering Practices Documentation</title>
 <meta name="generator" content="Jekyll v3.8.5" />
 <meta property="og:title" content="Code Review 要点" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Google’s Engineering Practices documentation" />
-<meta property="og:description" content="Google’s Engineering Practices documentation" />
-<meta property="og:site_name" content="eng-practices" />
+<meta name="description" content="谷歌工程实践文档 - https://jimmysong.io/eng-practices" />
+<meta property="og:description" content="谷歌工程实践文档 - https://jimmysong.io/eng-practices" />
+<meta property="og:site_name" content="Google Engineering Practices Documentation" />
 <script type="application/ld+json">
-{"url":"/review/reviewer/looking-for.html","headline":"Code Review 要点","description":"Google’s Engineering Practices documentation","@type":"WebPage","@context":"http://schema.org"}</script>
+{"url":"/eng-practices/review/reviewer/looking-for.html","headline":"Code Review 要点","description":"谷歌工程实践文档 - https://jimmysong.io/eng-practices","@type":"WebPage","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
-    <link rel="stylesheet" href="/assets/css/style.css?v=d8fca40959a2320f71702864e87eeb5400473ebd">
   </head>
+
   <body>
-    <div class="container-lg px-3 my-5 markdown-body">
-      
-      <h1><a href="/">eng-practices</a></h1>
-      
 
-      <h1 id="code-review-要点">Code Review 要点</h1>
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/rootsongjc/eng-practices">View on GitHub</a>
 
-<p>注意：在考虑这些要点时，请谨记 “<a href="/review/reviewer/standard.html">Code Review 标准</a>”。</p>
+          <h1 id="project_title">Google Engineering Practices Documentation</h1>
+          <h2 id="project_tagline">谷歌工程实践文档 - https://jimmysong.io/eng-practices</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1 id="code-review-要点">Code Review 要点</h1>
+
+<p>注意：在考虑这些要点时，请谨记 “<a href="/eng-practices/review/reviewer/standard.html">Code Review 标准</a>”。</p>
 
 <h2 id="设计">设计</h2>
 
@@ -51,7 +64,7 @@
 
 <h2 id="测试">测试</h2>
 
-<p>要求进行适合变更的单元、集成或端到端测试。通常，除非 CL 处理<a href="/review/emergencies.html">紧急情况</a>，否则应在与生产代码相同的 CL 中添加测试。</p>
+<p>要求进行适合变更的单元、集成或端到端测试。通常，除非 CL 处理<a href="/eng-practices/review/emergencies.html">紧急情况</a>，否则应在与生产代码相同的 CL 中添加测试。</p>
 
 <p>确保 CL 中的测试正确，合理且有用。 测试不会自行测试，我们很少为测试编写测试——人类必须确保测试有效。</p>
 
@@ -122,17 +135,21 @@
 
 <p>确保查看您被要求查看的<strong>每一行</strong>代码，查看<strong>上下文</strong>，确保您<strong>提高代码健康状况</strong>，并赞扬开发人员所做的<strong>好事</strong>。</p>
 
-<p>下一篇：<a href="/review/reviewer/navigate.html">查看 CL 的步骤</a></p>
+<p>下一篇：<a href="/eng-practices/review/reviewer/navigate.html">查看 CL 的步骤</a></p>
 
-
-      
-      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
-        This site is open source. <a href="https://github.com/rootsongjc/eng-practices/edit/gh-pages/review/reviewer/looking-for.md">Improve this page</a>.
-      </div>
-      
+      </section>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
-    <script>anchors.add();</script>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">Google Engineering Practices Documentation maintained by <a href="https://github.com/rootsongjc">rootsongjc</a></p>
+        
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
     
   </body>
 </html>

@@ -1,35 +1,48 @@
 <!DOCTYPE html>
 <html lang="en-US">
+
   <head>
-    <meta charset="UTF-8">
+    <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="stylesheet" type="text/css" media="screen" href="/eng-practices/assets/css/style.css?v=47799344f85e373a4a74c4219af5070fbc3d5eb1">
 
 <!-- Begin Jekyll SEO tag v2.5.0 -->
-<title>查看 CL 的步骤 | eng-practices</title>
+<title>查看 CL 的步骤 | Google Engineering Practices Documentation</title>
 <meta name="generator" content="Jekyll v3.8.5" />
 <meta property="og:title" content="查看 CL 的步骤" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Google’s Engineering Practices documentation" />
-<meta property="og:description" content="Google’s Engineering Practices documentation" />
-<meta property="og:site_name" content="eng-practices" />
+<meta name="description" content="谷歌工程实践文档 - https://jimmysong.io/eng-practices" />
+<meta property="og:description" content="谷歌工程实践文档 - https://jimmysong.io/eng-practices" />
+<meta property="og:site_name" content="Google Engineering Practices Documentation" />
 <script type="application/ld+json">
-{"url":"/review/reviewer/navigate.html","headline":"查看 CL 的步骤","description":"Google’s Engineering Practices documentation","@type":"WebPage","@context":"http://schema.org"}</script>
+{"url":"/eng-practices/review/reviewer/navigate.html","headline":"查看 CL 的步骤","description":"谷歌工程实践文档 - https://jimmysong.io/eng-practices","@type":"WebPage","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
-    <link rel="stylesheet" href="/assets/css/style.css?v=d8fca40959a2320f71702864e87eeb5400473ebd">
   </head>
-  <body>
-    <div class="container-lg px-3 my-5 markdown-body">
-      
-      <h1><a href="/">eng-practices</a></h1>
-      
 
-      <h1 id="查看-cl-的步骤">查看 CL 的步骤</h1>
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/rootsongjc/eng-practices">View on GitHub</a>
+
+          <h1 id="project_title">Google Engineering Practices Documentation</h1>
+          <h2 id="project_tagline">谷歌工程实践文档 - https://jimmysong.io/eng-practices</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1 id="查看-cl-的步骤">查看 CL 的步骤</h1>
 
 <h2 id="总结">总结</h2>
 
-<p>现在您已经知道了 <a href="/review/reviewer/looking-for.html">Code Review 要点</a>，那么管理分布在多个文件中的评论的最有效方法是什么？</p>
+<p>现在您已经知道了 <a href="/eng-practices/review/reviewer/looking-for.html">Code Review 要点</a>，那么管理分布在多个文件中的评论的最有效方法是什么？</p>
 
 <ol>
   <li>变更是否有意义？它有很好的描述吗？</li>
@@ -49,7 +62,7 @@
 
 <h2 id="step_two">第二步：检查 CL 的主要部分</h2>
 
-<p>查找作为此 CL “主要”部分的文件。通常，逻辑变更最大的文件就是 CL 的主要部分。先看看这些主要部分。这有助于为 CL 的所有较小部分提供上下文，通常可以加速代码审查。如果 CL 太大而无法确定哪些部分是主要部分，请向开发人员询问您应该首先查看的内容，或者要求他们<a href="/review/developer/small-cls.html">将 CL 拆分为多个 CL</a>。</p>
+<p>查找作为此 CL “主要”部分的文件。通常，逻辑变更最大的文件就是 CL 的主要部分。先看看这些主要部分。这有助于为 CL 的所有较小部分提供上下文，通常可以加速代码审查。如果 CL 太大而无法确定哪些部分是主要部分，请向开发人员询问您应该首先查看的内容，或者要求他们<a href="/eng-practices/review/developer/small-cls.html">将 CL 拆分为多个 CL</a>。</p>
 
 <p>立即发送这些主要设计评论非常重要，有两个主要原因：</p>
 
@@ -62,17 +75,21 @@
 
 <p>一旦您确认整个 CL 没有重大的设计问题，试着找出一个逻辑顺序来查看文件，同时确保您不会错过查看任何文件。 通常在查看主要文件之后，最简单的方法是按照代码审查工具向您提供的顺序浏览每个文件。有时在阅读主代码之前先阅读测试也很有帮助，因为这样您就可以了解应该做些什么。</p>
 
-<p>下一篇：<a href="/review/reviewer/speed.html">Code Review 速度</a></p>
+<p>下一篇：<a href="/eng-practices/review/reviewer/speed.html">Code Review 速度</a></p>
 
-
-      
-      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
-        This site is open source. <a href="https://github.com/rootsongjc/eng-practices/edit/gh-pages/review/reviewer/navigate.md">Improve this page</a>.
-      </div>
-      
+      </section>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
-    <script>anchors.add();</script>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">Google Engineering Practices Documentation maintained by <a href="https://github.com/rootsongjc">rootsongjc</a></p>
+        
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
     
   </body>
 </html>

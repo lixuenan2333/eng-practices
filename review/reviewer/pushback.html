@@ -1,31 +1,44 @@
 <!DOCTYPE html>
 <html lang="en-US">
+
   <head>
-    <meta charset="UTF-8">
+    <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="stylesheet" type="text/css" media="screen" href="/eng-practices/assets/css/style.css?v=47799344f85e373a4a74c4219af5070fbc3d5eb1">
 
 <!-- Begin Jekyll SEO tag v2.5.0 -->
-<title>处理 Code Review 中的抵触 | eng-practices</title>
+<title>处理 Code Review 中的抵触 | Google Engineering Practices Documentation</title>
 <meta name="generator" content="Jekyll v3.8.5" />
 <meta property="og:title" content="处理 Code Review 中的抵触" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Google’s Engineering Practices documentation" />
-<meta property="og:description" content="Google’s Engineering Practices documentation" />
-<meta property="og:site_name" content="eng-practices" />
+<meta name="description" content="谷歌工程实践文档 - https://jimmysong.io/eng-practices" />
+<meta property="og:description" content="谷歌工程实践文档 - https://jimmysong.io/eng-practices" />
+<meta property="og:site_name" content="Google Engineering Practices Documentation" />
 <script type="application/ld+json">
-{"url":"/review/reviewer/pushback.html","headline":"处理 Code Review 中的抵触","description":"Google’s Engineering Practices documentation","@type":"WebPage","@context":"http://schema.org"}</script>
+{"url":"/eng-practices/review/reviewer/pushback.html","headline":"处理 Code Review 中的抵触","description":"谷歌工程实践文档 - https://jimmysong.io/eng-practices","@type":"WebPage","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
-    <link rel="stylesheet" href="/assets/css/style.css?v=d8fca40959a2320f71702864e87eeb5400473ebd">
   </head>
-  <body>
-    <div class="container-lg px-3 my-5 markdown-body">
-      
-      <h1><a href="/">eng-practices</a></h1>
-      
 
-      <h1 id="处理-code-review-中的抵触">处理 Code Review 中的抵触</h1>
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/rootsongjc/eng-practices">View on GitHub</a>
+
+          <h1 id="project_title">Google Engineering Practices Documentation</h1>
+          <h2 id="project_tagline">谷歌工程实践文档 - https://jimmysong.io/eng-practices</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1 id="处理-code-review-中的抵触">处理 Code Review 中的抵触</h1>
 
 <p>有时开发人员会抵触（Pushback）代码审查。他们要么不同意您的建议，要么抱怨您太严格。</p>
 
@@ -37,37 +50,41 @@
 
 <p>特别是，当审查人员认为他们的建议会改善代码健康状况时，他们应该继续提倡更改，如果他们认为最终的代码质量改进能够证明所需的额外工作是合理的。<strong>提高代码健康状况往往只需很小的几步。</strong></p>
 
-<p>有时需要几轮解释一个建议才能真正陷入其中。只要确保始终保持<a href="/review/reviewer/comments.html#courtesy">礼貌</a>，让开发人员知道你听到他们在说什么，你就是不同意。</p>
+<p>有时需要几轮解释一个建议才能真正陷入其中。只要确保始终保持<a href="/eng-practices/review/reviewer/comments.html#courtesy">礼貌</a>，让开发人员知道你听到他们在说什么，你就是不同意。</p>
 
 <h2 id="upsetting_developers">沮丧的开发者</h2>
 
-<p>审查者有时认为，如果审查者人坚持改进，开发人员会感到不安。有时候开发人员会感到很沮丧，但这样的感觉通常会很短，后来他们会非常感谢您在提高代码质量方面给他们的帮助。通常情况下，如果您在评论中表现得很有<a href="/review/reviewer/comments.html#courtesy">礼貌</a>，开发人员实际上根本不会感到沮丧，只是审查者会感觉担心而已。开发者感到沮丧通常更多地与<a href="/review/reviewer/comments.html#courtesy">评论的写作方式</a>有关，而不是审查者对代码质量的坚持。</p>
+<p>审查者有时认为，如果审查者人坚持改进，开发人员会感到不安。有时候开发人员会感到很沮丧，但这样的感觉通常会很短，后来他们会非常感谢您在提高代码质量方面给他们的帮助。通常情况下，如果您在评论中表现得很有<a href="/eng-practices/review/reviewer/comments.html#courtesy">礼貌</a>，开发人员实际上根本不会感到沮丧，只是审查者会感觉担心而已。开发者感到沮丧通常更多地与<a href="/eng-practices/review/reviewer/comments.html#courtesy">评论的写作方式</a>有关，而不是审查者对代码质量的坚持。</p>
 
 <h2 id="later">稍后清理</h2>
 
 <p>开发人员抵触的一个常见原因是开发人员（可以理解）希望完成任务。他们不想通过另一轮审查来完成该 CL。所以他们说会在以后的 CL 中清理一些东西，所以您现在应该 LGTM 这个 CL。一些开发人员非常擅长这一点，并会立即编写一个修复问题的后续 CL。但是，经验表明，在开发人员编写原始 CL 并通过需要的时间越多，这种清理发生的可能性就越小。实际上，通常除非开发人员在当前 CL 之后立即进行清理，否则它就永远不会发生。这不是因为开发人员不负责任，而是因为他们有很多工作要做，清理工作在其他工作中被丢失或遗忘。因此，在代码进入代码库并“完成”之前，通常最好坚持让开发人员现在清理他们的 CL。让人们“后来清理东西”是代码库质量退化的常见原因。</p>
 
-<p>如果 CL 引入了新的复杂性，则必须在提交之前将其清除，除非是<a href="/review/emergencies.html">紧急情况</a>。如果 CL 暴露了相关的问题并且现在无法解决，那么开发人员应该为清理提交一个 bug 并将其分配给自己，这样它就不会丢失。他们还可以选择在引用提交的 bug 的代码中编写 TODO 注释。</p>
+<p>如果 CL 引入了新的复杂性，则必须在提交之前将其清除，除非是<a href="/eng-practices/review/emergencies.html">紧急情况</a>。如果 CL 暴露了相关的问题并且现在无法解决，那么开发人员应该为清理提交一个 bug 并将其分配给自己，这样它就不会丢失。他们还可以选择在引用提交的 bug 的代码中编写 TODO 注释。</p>
 
 <h2 id="strictness">关于严格性的抱怨</h2>
 
-<p>如果您以前有相当宽松的代码审查，并转而进行严格的审查，一些开发人员会抱怨得非常大声。通常提高代码审查的<a href="/review/reviewer/speed.html">速度</a>会让这些抱怨逐渐消失。</p>
+<p>如果您以前有相当宽松的代码审查，并转而进行严格的审查，一些开发人员会抱怨得非常大声。通常提高代码审查的<a href="/eng-practices/review/reviewer/speed.html">速度</a>会让这些抱怨逐渐消失。</p>
 
 <p>有时，这些投诉可能需要数月才会消失，但最终开发人员往往会看到严格的代码审查的价值，因为他们会看到他们帮助生成的优秀代码。有时最响亮的抗议者甚至会成为你最坚定的支持者，一旦发生某些事情，他们就会真w正看到你通过严格要求增加的价值。</p>
 
 <h2 id="conflicts">解决冲突</h2>
 
-<p>如果上述所有操作仍无法解决您与开发人员之间的冲突，请参阅 “<a href="/review/reviewer/standard.html">Code Review 标准</a>”以获取有助于解决冲突的指导和原则。</p>
+<p>如果上述所有操作仍无法解决您与开发人员之间的冲突，请参阅 “<a href="/eng-practices/review/reviewer/standard.html">Code Review 标准</a>”以获取有助于解决冲突的指导和原则。</p>
 
-
-      
-      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
-        This site is open source. <a href="https://github.com/rootsongjc/eng-practices/edit/gh-pages/review/reviewer/pushback.md">Improve this page</a>.
-      </div>
-      
+      </section>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
-    <script>anchors.add();</script>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">Google Engineering Practices Documentation maintained by <a href="https://github.com/rootsongjc">rootsongjc</a></p>
+        
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
     
   </body>
 </html>

@@ -1,31 +1,44 @@
 <!DOCTYPE html>
 <html lang="en-US">
+
   <head>
-    <meta charset="UTF-8">
+    <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="stylesheet" type="text/css" media="screen" href="/eng-practices/assets/css/style.css?v=47799344f85e373a4a74c4219af5070fbc3d5eb1">
 
 <!-- Begin Jekyll SEO tag v2.5.0 -->
-<title>Code Review 速度 | eng-practices</title>
+<title>Code Review 速度 | Google Engineering Practices Documentation</title>
 <meta name="generator" content="Jekyll v3.8.5" />
 <meta property="og:title" content="Code Review 速度" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Google’s Engineering Practices documentation" />
-<meta property="og:description" content="Google’s Engineering Practices documentation" />
-<meta property="og:site_name" content="eng-practices" />
+<meta name="description" content="谷歌工程实践文档 - https://jimmysong.io/eng-practices" />
+<meta property="og:description" content="谷歌工程实践文档 - https://jimmysong.io/eng-practices" />
+<meta property="og:site_name" content="Google Engineering Practices Documentation" />
 <script type="application/ld+json">
-{"url":"/review/reviewer/speed.html","headline":"Code Review 速度","description":"Google’s Engineering Practices documentation","@type":"WebPage","@context":"http://schema.org"}</script>
+{"url":"/eng-practices/review/reviewer/speed.html","headline":"Code Review 速度","description":"谷歌工程实践文档 - https://jimmysong.io/eng-practices","@type":"WebPage","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
-    <link rel="stylesheet" href="/assets/css/style.css?v=d8fca40959a2320f71702864e87eeb5400473ebd">
   </head>
-  <body>
-    <div class="container-lg px-3 my-5 markdown-body">
-      
-      <h1><a href="/">eng-practices</a></h1>
-      
 
-      <h1 id="code-review-速度">Code Review 速度</h1>
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/rootsongjc/eng-practices">View on GitHub</a>
+
+          <h1 id="project_title">Google Engineering Practices Documentation</h1>
+          <h2 id="project_tagline">谷歌工程实践文档 - https://jimmysong.io/eng-practices</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1 id="code-review-速度">Code Review 速度</h1>
 
 <h2 id="why">为什么尽快进行 Code Review？</h2>
 
@@ -59,9 +72,9 @@
 
 <p>即使有时需要很久才能完成整个审查流程，但在整个过程中获得审查者的快速响应可以显着减轻开发人员对“慢速”代码审查感到的挫败感。</p>
 
-<p>如果您太忙而无法对 CL 进行全面审查，您仍然可以发送快速回复，让开发人员知道您什么时候可以开始，或推荐其他能够更快回复的审查人员，或者<a href="/review/reviewer/navigate.html">提供一些大体的初步评论</a>。 （注意：这并不意味着您应该中断编码，即使发送这样的响应，也要在工作中的合理断点处发出响应。）</p>
+<p>如果您太忙而无法对 CL 进行全面审查，您仍然可以发送快速回复，让开发人员知道您什么时候可以开始，或推荐其他能够更快回复的审查人员，或者<a href="/eng-practices/review/reviewer/navigate.html">提供一些大体的初步评论</a>。 （注意：这并不意味着您应该中断编码，即使发送这样的响应，也要在工作中的合理断点处发出响应。）</p>
 
-<p>重要的是，审查人员要花足够的时间进行审查，确信他们的“LGTM”意味着“此代码符合我们的<a href="/review/reviewer/standard.html">标准</a>。”但是，理想情况下，个人反应仍然应该很<a href="#fast">快</a>。</p>
+<p>重要的是，审查人员要花足够的时间进行审查，确信他们的“LGTM”意味着“此代码符合我们的<a href="/eng-practices/review/reviewer/standard.html">标准</a>。”但是，理想情况下，个人反应仍然应该很<a href="#fast">快</a>。</p>
 
 <h2 id="tz">跨时区审查</h2>
 
@@ -82,29 +95,33 @@
 
 <h2 id="large">大型 CL</h2>
 
-<p>如果有人向您发送了代码审查太大，您不确定何时有时间查看，那么您应该要求开发者<a href="/review/developer/small-cls.html">将 CL 拆分为几个较小的 CL</a>  而不是一次审查的一个巨大的 CL。这通常可行，对审查者非常有帮助，即使需要开发人员的额外工作。</p>
+<p>如果有人向您发送了代码审查太大，您不确定何时有时间查看，那么您应该要求开发者<a href="/eng-practices/review/developer/small-cls.html">将 CL 拆分为几个较小的 CL</a>  而不是一次审查的一个巨大的 CL。这通常可行，对审查者非常有帮助，即使需要开发人员的额外工作。</p>
 
 <p>如果 CL 无法分解为较小的 CL，并且您没有时间快速查看整个内容，那么至少要对 CL 的整体设计写一些评论并将其发送回开发人员以进行改进。作为审查者，您的目标之一应该在不牺牲代码健康状况的前提下，始终减少开发者能够快速采取某种进一步的操作的阻力。</p>
 
 <h2 id="time">代码审查随时间推移而改进</h2>
 
-<p>如果您遵循这些准则，并且您对代码审查非常严格，那么您应该会发现整个代码审核流程会随着时间的推移而变得越来越快。开发者可以了解健康代码所需的内容，并向您发送从一开始就很棒的 CL，审查时间会越来越短。审查者学会快速响应，而不是在审查过程中添加不必要的延迟。但是，从长远来看，<strong>不要妄想在<a href="/review/reviewer/standard.html">代码审查标准</a>或质量方面妥协而使代码审查速度飞跃，这样做实际上不会有任何帮助</strong>。</p>
+<p>如果您遵循这些准则，并且您对代码审查非常严格，那么您应该会发现整个代码审核流程会随着时间的推移而变得越来越快。开发者可以了解健康代码所需的内容，并向您发送从一开始就很棒的 CL，审查时间会越来越短。审查者学会快速响应，而不是在审查过程中添加不必要的延迟。但是，从长远来看，<strong>不要妄想在<a href="/eng-practices/review/reviewer/standard.html">代码审查标准</a>或质量方面妥协而使代码审查速度飞跃，这样做实际上不会有任何帮助</strong>。</p>
 
 <h2 id="紧急情况">紧急情况</h2>
 
-<p>还有一些<a href="/review/emergencies.html">紧急情况</a>，CL 必须非常快速地通过整个审查流程，并且质量准则将放宽。请查看<a href="(../emergencies.md#what)">什么是紧急情况？</a> 中描述的哪些情况属于紧急情况，哪些情况不属于紧急情况。</p>
+<p>还有一些<a href="/eng-practices/review/emergencies.html">紧急情况</a>，CL 必须非常快速地通过整个审查流程，并且质量准则将放宽。请查看<a href="(../emergencies.md#what)">什么是紧急情况？</a> 中描述的哪些情况属于紧急情况，哪些情况不属于紧急情况。</p>
 
-<p>下一篇：<a href="/review/reviewer/comments.html">如何撰写 Code Review 评论</a></p>
+<p>下一篇：<a href="/eng-practices/review/reviewer/comments.html">如何撰写 Code Review 评论</a></p>
 
-
-      
-      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
-        This site is open source. <a href="https://github.com/rootsongjc/eng-practices/edit/gh-pages/review/reviewer/speed.md">Improve this page</a>.
-      </div>
-      
+      </section>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
-    <script>anchors.add();</script>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">Google Engineering Practices Documentation maintained by <a href="https://github.com/rootsongjc">rootsongjc</a></p>
+        
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
     
   </body>
 </html>
