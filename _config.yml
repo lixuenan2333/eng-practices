@@ -1,4 +1,6 @@
 theme: jekyll-theme-slate
+title: Google Engineering Practices Documentation
+baseurl: /eng-practices
 plugins:
   - jekyll-analytics
 jekyll_analytics:
