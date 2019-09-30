@@ -4,9 +4,11 @@ Google 有许多通用工程实践，几乎涵盖所有语言和项目。此文�
 
 当前包含以下文档：
 
-*   [Google 代码审查指南](review/index.md)，实则两套指南：
-    *   [代码审查者指南](review/reviewer/index.md)
-    *   [代码开发者指南](review/developer/index.md)
+*   Google 代码审查指南，实则两套指南：
+    *   代码审查者指南
+    *   代码开发者指南
+
+在线浏览：<https://jimmysong.io/eng-practices>
 
 ## 译者序
 
