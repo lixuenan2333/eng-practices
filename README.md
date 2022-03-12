@@ -2,6 +2,12 @@
 
 Google 有许多通用工程实践，几乎涵盖所有语言和项目。此文档为长期积累的最佳实践，是集体经验的结晶。我们尽可能地将其公之于众，您的组织和开源项目也会从中受益。
 
+<div align="center">
+  <a href="https://jimmysong.io/eng-practices/">
+    <img src="cover-thumbnail.jpg" title="谷歌工程实践文档" alt="谷歌工程实践文档">
+  </a>
+</div>
+
 当前包含以下文档：
 
 *   Google 代码审查指南，实则两套指南：
